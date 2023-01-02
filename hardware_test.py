@@ -208,6 +208,8 @@ def do_menu():
     print("bat = battery variation test")
     print("adc0 = variation test on ADC0")
     print("adc = read 4 on board ADCs")
+    print("adc0mon adc1mon adc0pat adc1pat = more ADC tests")
+    print("sens sens30 = sensor tests")
     print("Q = Quit")
     print()
     return input("Select ")
@@ -223,6 +225,7 @@ def double_beep(d13):
     d13.off()
 
 
+        
 #
 # global variables for hardware - so they can be accessed from REPL interpreter\
 #
@@ -237,13 +240,35 @@ adc3 = basic_ADC_Read(3)
 lmotor = LeftMotor()
 rmotor = RightMotor()
 encoders = MotorEncoders()
+onboard_led = Pin(25, Pin.OUT)
+ir_led = Pin(12, Pin.OUT)
+
+def scan_ir():
+    ir_led.off()
+    right_off = adc.block_read(0)
+    ir_led.on()
+    right_on = adc.block_read(0)
+    ir_led.off()
+    
+    middle_off = adc.block_read(1)
+    ir_led.on()
+    middle_on = adc.block_read(1)
+    ir_led.off()
+
+    left_off = adc.block_read(2)
+    ir_led.on()
+    left_on = adc.block_read(2)            
+    ir_led.off()
+    return left_on - left_off, middle_on - middle_off, right_on - right_off
 
 
 def main():
     double_beep(d13)
+    onboard_led.on()
 
     while True:
         option = do_menu().strip().lower()
+        onboard_led.off()
         if option == "1":
             for _ in range(10):
                 # double flash right, single flash left
@@ -425,17 +450,33 @@ def main():
                 print('{:04x} {:012b}'.format(value, value//16))	# bottom 4 bit meaningless duplication of top 4 bits
                 sleep(time_to_wait_per_reading_seconds)
             print()
+        
+        elif option == 'sens':
+
+            left, middle, right = scan_ir()
+            print("left {} middle {} right {}".format(left, middle, right))
+
+        elif option == 'sens30':
+            time_to_wait_per_reading_seconds = 0.2
+            time_to_monitor_seconds = 30
             
+            for _ in range(time_to_monitor_seconds/time_to_wait_per_reading_seconds):
+                left, middle, right = scan_ir()
+                print("left {} middle {} right {}".format(left, middle, right))
+                sleep(time_to_wait_per_reading_seconds)
+
         elif option == 'q':
             break
         
         else:
             print("Unknown")
  
+ 
         d13.on()
         sleep(0.1)
         d13.off()
-    
+        onboard_led.on()
+        
 main()
 
 
