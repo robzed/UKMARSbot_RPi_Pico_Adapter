@@ -1,0 +1,7 @@
+
+# Random operating system files
+.DS_Store
+
+# Ramdom text editor files
+*.swp
+
