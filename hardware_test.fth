@@ -221,7 +221,7 @@ variable ADClast
   cr .adc_summary
 ;
 
-: bat_stats ( -- value )
+: bat_stats ( -- ) 
   -7 adc_stats
 ;
 

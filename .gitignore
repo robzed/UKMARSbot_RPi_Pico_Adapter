@@ -5,3 +5,5 @@
 # Ramdom text editor files
 *.swp
 
+# Ignore stuff
+Reference_Material/do_not_commit/
