@@ -1,7 +1,7 @@
 # Using the Cytron Maker Nano RP2040 with the UKMARSBot
 Written up by Rob Probin, August 2023, based on original notes by David Hannaford.
 
-![Maker Nano RP2040](images/Maker_Nano_RP2040.jpg)
+<img src="images/Maker_Nano_RP2040.jpg" width="100" />
 
 
 ## Introduction
@@ -53,7 +53,8 @@ Change the upper resistor of the potential divider (R7 - normally 10K) with a 22
 David has an alternative method which is to remove or leave out the R7 10Kohm 
 resistor. This will stop the battery voltage/2 being fed to GP15 which could be above the 3.3v input pin voltage.
 
-![Remove R7](images/Remove_R7.jpg)
+<img src="images/Remove_R7.jpg" width="100" />
+
 
 #### Battery Measurement Alternative 3:
 
@@ -82,7 +83,7 @@ a gap between them,
 If you have already made the UKMARSBot then you can carefully snip that socket 
 pin out with some side cutters.
 
-![Remove 5v Pin](images/Remove_5v_Pin.jpg)
+<img src="images/Removed_5v_Pin.jpg" width="100" />
 
 
 ### Stage 3: Power the logic and sensors with 3.3v
@@ -96,7 +97,7 @@ To do this, you need to short the 3.3v and 5v nets together. An easy way to
 do this is on the end of the pin header of the sensor connector, as shown 
 in this image:
 
-![Connect 3.3v to 5v line](images/Connect_3.3v.jpg)
+<img src="images/Connect_3.3v.jpg" width="100" />
 
 
 ### Stage 4: Plug in the Arduino Nano RP2040
@@ -106,7 +107,7 @@ socket where the Arduino Nano normally goes!
 
 Make sure the device goes the right way around!
 
-![Plug in Maker Nano RP2040](images/Plugged_in_Maker_Nano_RP2040.jpg)
+<img src="images/Plugged_in_Maker_Nano_RP2040.jpg" width="100" />
 
 
 ### Stage 5 [OPTIONAL] - Sensor resistors
