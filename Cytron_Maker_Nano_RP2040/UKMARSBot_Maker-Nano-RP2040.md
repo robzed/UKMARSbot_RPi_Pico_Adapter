@@ -53,7 +53,7 @@ Change the upper resistor of the potential divider (R7 - normally 10K) with a 22
 David has an alternative method which is to remove or leave out the R7 10Kohm 
 resistor. This will stop the battery voltage/2 being fed to GP15 which could be above the 3.3v input pin voltage.
 
-<img src="images/Removed_5v_Pin.jpg" width="250" />
+<img src="images/Removed_R7.jpg" width="250" />
 
 
 #### Battery Measurement Alternative 3:
@@ -107,7 +107,7 @@ socket where the Arduino Nano normally goes!
 
 Make sure the device goes the right way around!
 
-<img src="images/Plugged_in_Maker_Nano_RP2040.jpg" width="100" />
+<img src="images/Plugged_in_Maker_Nano_RP2040.jpg" width="250" />
 
 
 ### Stage 5 [OPTIONAL] - Sensor resistors
