@@ -50,7 +50,7 @@ that the XOR gate runs at 3v logic.
 If you already build the UKMARSbot with a 74HC86 then you are done!
 
 If you haven't built it - you can use the 74HC86 at 5v and 3.3v - so you can 
-use it with the original Arduino Nano if you choose not to use the Maker Nano RP2040.
+use it with the original Arduino Nano if you choose not to use the Nano RP2040 Connect.
 
 There are some pictures and description in this link:
 
