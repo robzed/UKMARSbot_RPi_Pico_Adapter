@@ -1,7 +1,7 @@
 # Using the Arduino Nano RP2040 Connect with the UKMARSBot
 Written up by Rob Probin, August 2023.
 
-<img src="images/UKMARSBot_NanoRP2040Connect.jpg" width="250" />
+<img src="images/UKMARSBot_NanoRP2040Connect.jpg" width="350" />
 
 
 ## Introduction
@@ -100,15 +100,15 @@ You can connect a link between on the Nano RP2040 Connect.
 
 This is from the 4th pin to the to the 3.3v pin (2nd pin from other direction)
 
-<img src="images/Link_3.3v_to_5v.jpg" width="250" />
+<img src="images/Link_3.3v_to_5v.jpg" width="400" />
 
-<img src="images/schematic_power_link.png" width="250" />
+<img src="images/schematic_power_link.png" width="400" />
 
 
 #### Method 2: Short on the UKMARSBot PCB
 
-An easy way todo this is on the end of the pin header of the sensor connector, 
-as shownin this image:
+An easy way to do this is on the end of the pin header of the sensor connector, 
+as shown in this image:
 
 <img src="images/Connect_3.3v.jpg" width="250" />
 
@@ -117,21 +117,23 @@ as shownin this image:
 
 If you wish to connect a serial interface to the Serial Port header, then
 we have might need to consider changes. You might use this with a USB to
-serial converter or a HC05/HC06 Bluetooth module 
+serial converter or a HC05/HC06 Bluetooth module.
 
-v1.0 boards do not normally have circuitry. This will be a 3.3v I/O and 3v on 
+UKMARSbot v1.0 boards do not normally have circuitry. This will be a 3.3v I/O and 3v on 
 the Power output; No changes necessary. Be careful not to connect the 5v/3v 
-connector to any power source - although it 
+connector to any power source - although it can supply 3.3v to power something
+else (being careful not to exceed the total 3.3v power from the Arduino Nano 
+RP2040 connect).
 
-v1.1 and v1.3 boards have components to reduce the 5v logic to 3.3v. 
+UKMARSbot v1.1 and v1.3 boards have components to reduce the 5v logic to 3.3v. 
 
-<img src="images/serial_port.png" width="250" />
+<img src="images/serial_port.png" width="300" />
 
 Here you can:
   * Fit a wire instead of the D3 diode (or just short across the
     diode if you've already fitted D3).
-  * Fit a wire instead of the R11 4k7 resistor (or just short acorss
-    the resisotr if you've already fitted R11.
+  * Fit a wire instead of the R11 4k7 resistor (or just short across
+    the resistor if you've already fitted R11.
   * Leave out the R10 10K resistor. (If you've already fitted it, then 
     either just leave it, remove via desoldering or just snip one of the 
     leads with side-cutters).
@@ -146,7 +148,7 @@ at 3.3v power - but might exhibit problems due to low voltage.
 Finally you can plug the Arduino Nano RP2040 Connect into the UKMARSBot 
 socket where the Arduino Nano normally goes!
 
-Make sure the device goes the right way around!
+Make sure the device goes in the right way around!
 
 <img src="images/UKMARSBot_NanoRP2040Connect.jpg" width="250" />
 
@@ -160,8 +162,8 @@ However for line following they will probably run OK with the lower
 voltage, and it might work as well for wall following. I suggest testing
 before making any changes. It seems to work ok with default values.
 
-The ADC input on the Cytron board is higher resolution than on
-the original Arduino Nano so this helps to compensate.
+The ADC input on the Arduino Nano RP2040 Connect board is higher resolution 
+than on the original Arduino Nano so this helps to compensate.
 
 
 ## ADC Inputs
@@ -263,8 +265,7 @@ Picture and Instructions can be found here:
 
 This board can support Bluetooth Low Energy (aka BLE or Bluetooth LE). 
 
-When you enable this you lose ability to communicate with the RGB LED and 
-potentially other items.
+When you enable this you lose ability to communicate with the RGB LED.
 
 This link contains the following warning: "While using the Bluetooth® Low 
 Energy mode on the NINA module, the RGB cannot be used by default. While 
@@ -289,8 +290,8 @@ added in.)
 
 For more on BLE under the Arduino environment see these links:
 
-https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-ble-device-to-device
-https://www.arduino.cc/reference/en/libraries/arduinoble
+ - https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-ble-device-to-device
+ - https://www.arduino.cc/reference/en/libraries/arduinoble
 
 
 ## Software Notes
