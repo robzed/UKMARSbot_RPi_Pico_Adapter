@@ -26,7 +26,7 @@ Although this unit does have 8 ADC inputs, the upper four are connected
 to the U-blox® Nina W102 processor, which potentially slows access for these 
 channels (to be confirmed).
 
-The IMU also is connected via I2C, both which might make it harder for the the IMU 
+The IMU is connected via I2C which *might* make it harder for the the IMU 
 to be used for any real-time control. Of course, you can log the data and use it 
 for analytics after runs - perhaps by plotting on a spreadsheet.
 
@@ -114,6 +114,10 @@ An easy way to do this is on the end of the pin header of the sensor connector,
 as shown in this image:
 
 <img src="images/Connect_3.3v.jpg" width="250" />
+
+Make sure you get the right end - otherwise you will end up shorting the 5v rail to ground!
+
+<img src="images/Sensor_Connector.png" width="250" />
 
 
 ### Step 4: Serial Port Connector Header Voltage

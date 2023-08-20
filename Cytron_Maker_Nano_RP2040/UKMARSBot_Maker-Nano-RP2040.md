@@ -99,6 +99,10 @@ in this image:
 
 <img src="images/Connect_3.3v.jpg" width="250" />
 
+Make sure you get the right end - otherwise you will end up shorting the 5v rail to ground!
+
+<img src="images/Sensor_Connector.png" width="250" />
+
 
 ### Step 4: Serial Port Connector Header Voltage
 
