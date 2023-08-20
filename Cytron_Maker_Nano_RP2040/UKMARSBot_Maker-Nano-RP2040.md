@@ -72,7 +72,7 @@ divider as described in alternative 2 or alternative 3.
 
 #### Battery Measurement Alternative 2:
 
-This option doesn't fix the missing analog inpu;t See below for some ideas.
+This option doesn't fix the missing analog input See below for some ideas.
 
 Change the upper resistor of the potential divider (R7 - normally 10K) with a 22K.
 
@@ -83,7 +83,7 @@ There is some pictures in this link:
 
 #### Battery Measurement Alternative 3:
 
-This option doesn't fix the missing analog inpu;t See below for some ideas.
+This option doesn't fix the missing analog input See below for some ideas.
 
 Peter suggesting soldering an additional resistor - see references below for 
 technical details. However, the summary is to reduce the battery divider output 
