@@ -185,6 +185,7 @@ Nano 33 BLE also has 8 channels. This table shows the arrangement.
 Note: A4 and A5 have 4k7 pull up resistors to allow them to be used with I2C devices. Be careful
 when using these ADC channels. 
 
+Adrian E. reported that in Micropython that ADC doesn’t work on A6; hopefully this will get fixed soon. It seems fine in the Arduino environment in C/C++.
 
 ## Software Notes
 

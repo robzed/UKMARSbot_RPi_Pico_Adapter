@@ -191,7 +191,7 @@ IMU and the authenicator secure element IC. So the ADC A4/A5 pin interacts with 
 
 https://support.arduino.cc/hc/en-us/articles/7454007471004-About-the-analog-pins-on-Nano-RP2040-Connect
 
-
+Adrian E. reported that in Micropython that ADC doesn’t work on A6 or A7; hopefully this will get fixed soon. It seems fine in the Arduino environment. 
 
 ### Function Sw. / Button Workarounds
 
