@@ -27,28 +27,51 @@ damaged.
 
 ## Modification Steps
 
-### Stage 1: XOR and Battery Voltage
 
-Summary:
- 1. Replacing the 74LS86 to a 74HC86 Exclusive-OR gate - so that the XOR gate runs at 3v logic.
-    If you already build the UKMARSbot with a 74HC86 then you are done!
-    If you haven't built it - you can use the 74HC86 at 5v and 3.3v - so you can use it with the original
-    Arduino Nano if you choose not to use the Maker Nano RP2040.
+### Step 1: Ensure 3.3v-compatible Exclusive-OR gate
 
- 2. Changing the battery measurement potential divider - so avoid putting more than 3v on the I/O pin.
-    Also see section below about ADC limitations before you decide which option to take.
+You must replacing the original 74LS86 with an 74HC86 Exclusive-OR gate - so 
+that the XOR gate runs at 3v logic.
 
-These are described in more detail pictures in this link:
+If you already build the UKMARSbot with a 74HC86 then you are done!
 
-[Description of 74HC86 and Battery Resistors](http://zedcode.blogspot.com/2022/12/converting-ukmarsbot-to-raspberry-pi.html)
+If you haven't built it - you can use the 74HC86 at 5v and 3.3v - so you can 
+use it with the original Arduino Nano if you choose not to use the Nano 33 BLE.
 
-There are three alternatives for battery voltage.
+There are some pictures and description in this link:
+
+[Description of 74HC86 change](http://zedcode.blogspot.com/2022/12/converting-ukmarsbot-to-raspberry-pi.html)
+
+### Step 2: Reduce Battery Sense Voltage
+
+You should change the battery measurement sense potential divider - so to avoid 
+putting more than 3v on the I/O pin.
+
+<img src="images/battery_divider.png" width="350" />
+
+There are two alternatives to reduce the battery voltage sense output:
 
 #### Battery Measurement Alternative 1:
 
 Change the upper resistor of the potential divider (R7 - normally 10K) with a 22K.
 
+There is some pictures in this link:
+
+[Description of Battery Resistors](http://zedcode.blogspot.com/2022/12/converting-ukmarsbot-to-raspberry-pi.html)
+
 #### Battery Measurement Alternative 2:
+
+Peter suggesting soldering an additional resistor - see references below for 
+technical details. However, the summary is to reduce the battery divider output 
+by putting a 4k7 resistor in parallel with the existing resistor fitted as R8.
+
+This gives a similar effect to Alternative 1, but might be easier if you have
+already fitted the original resistors and don't want to remove R7 since
+desoldering and removing resistors can be more tricky if you are not used to 
+soldering practices.
+
+
+#### Battery Measurement Alternative 3:
 
 David has an alternative method which is to remove or leave out the R7 10Kohm 
 resistor. This will stop the battery voltage/2 being fed to GP15 which could be above the 3.3v input pin voltage.
@@ -56,12 +79,7 @@ resistor. This will stop the battery voltage/2 being fed to GP15 which could be 
 <img src="images/Removed_R7.jpg" width="250" />
 
 
-#### Battery Measurement Alternative 3:
-
-Peter suggesting soldering an additional resistor - see references below for technical details.
-
-
-### Stage 2: Remove 5v
+### Step 3: Remove 5v Power
 
 The 5v pin is fed into the UKMARSBot from the Arduino Nano fourth pin. You have two options here.
 
@@ -86,7 +104,7 @@ pin out with some side cutters.
 <img src="images/Removed_5v_Pin.jpg" width="250" />
 
 
-### Stage 3: Power the logic and sensors with 3.3v
+### Step 4: Power the logic and sensors with 3.3v
 
 To feed the 3.3v output from the Maker Nano RP2040 to the UKMARSbot power 
 line - previously the 5v line. This means that, excluding the battery voltage, 
@@ -104,7 +122,7 @@ Make sure you get the right end - otherwise you will end up shorting the 5v rail
 <img src="images/Sensor_Connector.png" width="250" />
 
 
-### Step 4: Serial Port Connector Header Voltage
+### Step 5: Serial Port Connector Header Voltage
 
 If you wish to connect a serial interface to the Serial Port header, then
 we have might need to consider changes. You might use this with a USB to
@@ -134,7 +152,7 @@ have 3.3v logic - hence the extra components. They appear to work ok
 at 3.3v power - but might exhibit problems due to low voltage.
 
 
-### Stage 5: Plug in the Arduino Nano RP2040
+### Step 6: Plug in the Arduino Nano RP2040
 
 Finally you can plug the Cytron Maker Nano RP2040 into the UKMARSBot 
 socket where the Arduino Nano normally goes!
