@@ -1,7 +1,7 @@
 # Using the Arduino Nano 33 BLE with the UKMARSBot
 Written up by Rob Probin, August 2023, based on discussion by Peter Harrison.
 
-<img src="images/Nano33BLE.jpg" width="350" />
+<img src="images/UKMARSBot_Nano33BLE.jpg" width="350" />
 
 
 [Alternative Processors for UKMARSBOT](https://ukmars.org/2020/12/alternative-processors-for-ukmarsbot/)
@@ -22,7 +22,7 @@ In terms of software environments, this can run:
  - potentially in Forth via meCrisp and Zeptoforth - although official ports are 
    not avaialable yet. 
 
-The IMU also is connected via i2C, both which might make it harder for the the IMU 
+The IMU is connected via I2C, which *might* make it harder for the the IMU 
 to be used for any real-time control. Of course, you can log the data and use it 
 for analytics after runs - perhaps by plotting on a spreadsheet.
 
@@ -150,7 +150,7 @@ socket where the Arduino Nano normally goes!
 
 Make sure the device goes in the right way around!
 
-<img src="images/UKMARSBot_Nano33BLE.jpg" width="250" />
+<img src="images/UKMARSBot_Nano33BLE.jpg" width="350" />
 
 
 ### Stage 6 [OPTIONAL] - Sensor resistors
@@ -192,8 +192,8 @@ Adrian E. reported that in Micropython that ADC doesn’t work on A6; hopefully 
 The GPIO (general purpose input-output) pins are assigned to the same pins
 when using the Arduino environment. 
 
-In other environments you will need to look up the specific native RP2040 
-pin and peripheral assignments.
+In other environments you will need to look up the specific native 
+Microcontroller pin and peripheral assignments.
 
 
 ## References
