@@ -33,7 +33,7 @@ damaged.
 You must replacing the original 74LS86 with an 74HC86 Exclusive-OR gate - so 
 that the XOR gate runs at 3v logic.
 
-If you already build the UKMARSbot with a 74HC86 then you are done!
+If you already built the UKMARSbot with a 74HC86 then proceed to step 2.
 
 If you haven't built it - you can use the 74HC86 at 5v and 3.3v - so you can 
 use it with the original Arduino Nano if you choose not to use the Nano 33 BLE.
@@ -53,30 +53,46 @@ There are two alternatives to reduce the battery voltage sense output:
 
 #### Battery Measurement Alternative 1:
 
+Here you remove or leave out the R7 10Kohm resistor. 
+
+This will stop the battery voltage/2 being fed to GP15 which could be above the 3.3v input pin voltage.
+
+<img src="images/Removed_R7.jpg" width="250" />
+
+
+This is the easiest option for the Maker Nano RP2040. Removal of the R7 
+resistor is simpler that the other alternatives and also means that you can 
+potentially use the input for a different digital input if you want. 
+
+You can determine how you wish to deal with this missing input below 
+in the ADC section. (But remember _if_ you feed the voltage into another 
+analogue input, then you will need to alter the battery sense potential 
+divider as described in alternative 2 or alternative 3.
+
+
+#### Battery Measurement Alternative 2:
+
+This option doesn't fix the missing analog inpu;t See below for some ideas.
+
 Change the upper resistor of the potential divider (R7 - normally 10K) with a 22K.
 
 There is some pictures in this link:
 
 [Description of Battery Resistors](http://zedcode.blogspot.com/2022/12/converting-ukmarsbot-to-raspberry-pi.html)
 
-#### Battery Measurement Alternative 2:
+
+#### Battery Measurement Alternative 3:
+
+This option doesn't fix the missing analog inpu;t See below for some ideas.
 
 Peter suggesting soldering an additional resistor - see references below for 
 technical details. However, the summary is to reduce the battery divider output 
 by putting a 4k7 resistor in parallel with the existing resistor fitted as R8.
 
-This gives a similar effect to Alternative 1, but might be easier if you have
+This gives a similar effect to Alternative 2, but might be easier if you have
 already fitted the original resistors and don't want to remove R7 since
 desoldering and removing resistors can be more tricky if you are not used to 
 soldering practices.
-
-
-#### Battery Measurement Alternative 3:
-
-David has an alternative method which is to remove or leave out the R7 10Kohm 
-resistor. This will stop the battery voltage/2 being fed to GP15 which could be above the 3.3v input pin voltage.
-
-<img src="images/Removed_R7.jpg" width="250" />
 
 
 ### Step 3: Remove 5v Power
