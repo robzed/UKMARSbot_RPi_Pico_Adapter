@@ -62,6 +62,8 @@ There are some pictures and description in this link:
 You should change the battery measurement sense potential divider - so to avoid 
 putting more than 3v on the I/O pin.
 
+<img src="images/battery_divider.png" width="350" />
+
 There are two alternatives to reduce the battery voltage sense output:
 
 #### Battery Measurement Alternative 1:
