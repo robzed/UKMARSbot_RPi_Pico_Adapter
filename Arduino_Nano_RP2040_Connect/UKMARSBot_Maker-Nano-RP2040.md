@@ -6,7 +6,8 @@ Written up by Rob Probin, August 2023.
 
 ## Introduction
 
-The Arduino Nano RP2400 Connect is a feature rich alternative to the Arduino Nano, with 
+The [Arduino Nano RP2400 Connect](https://docs.arduino.cc/hardware/nano-rp2040-connect)
+is a feature rich alternative to the Arduino Nano, with 
 the much more powerful RP2040 microcontroller (the same micro used on the Raspberry Pi 
 Pico), a Wi-Fi interface, 16 megabytes of Flash, a 6-axis IMU (3D accelerator and 
 gyroscope), a temperature sensor and a microphone. It also has Bluetooth - although 
