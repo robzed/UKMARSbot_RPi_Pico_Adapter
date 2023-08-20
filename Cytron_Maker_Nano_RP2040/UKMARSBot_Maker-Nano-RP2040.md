@@ -100,7 +100,37 @@ in this image:
 <img src="images/Connect_3.3v.jpg" width="250" />
 
 
-### Stage 4: Plug in the Arduino Nano RP2040
+### Step 4: Serial Port Connector Header Voltage
+
+If you wish to connect a serial interface to the Serial Port header, then
+we have might need to consider changes. You might use this with a USB to
+serial converter or a HC05/HC06 Bluetooth module.
+
+UKMARSbot v1.0 boards do not normally have circuitry. This will be a 3.3v I/O and 3v on 
+the Power output; No changes necessary. Be careful not to connect the 5v/3v 
+connector to any power source - although it can supply 3.3v to power something
+else (being careful not to exceed the total 3.3v power from the Maker Nano 
+RP2040).
+
+UKMARSbot v1.1 and v1.3 boards have components to reduce the 5v logic to 3.3v. 
+
+<img src="images/serial_port.png" width="300" />
+
+Here you can:
+  * Fit a wire instead of the D3 diode (or just short across the
+    diode if you've already fitted D3).
+  * Fit a wire instead of the R11 4k7 resistor (or just short across
+    the resistor if you've already fitted R11.
+  * Leave out the R10 10K resistor. (If you've already fitted it, then 
+    either just leave it, remove via desoldering or just snip one of the 
+    leads with side-cutters).
+
+NOTE: The HC05/HC06 bluetooth modules they usually require 5v power but
+have 3.3v logic - hence the extra components. They appear to work ok
+at 3.3v power - but might exhibit problems due to low voltage.
+
+
+### Stage 5: Plug in the Arduino Nano RP2040
 
 Finally you can plug the Cytron Maker Nano RP2040 into the UKMARSBot 
 socket where the Arduino Nano normally goes!
@@ -110,7 +140,7 @@ Make sure the device goes the right way around!
 <img src="images/Plugged_in_Maker_Nano_RP2040.jpg" width="250" />
 
 
-### Stage 5 [OPTIONAL] - Sensor resistors
+### Stage 6 [OPTIONAL] - Sensor resistors
 
 You might want to consider replacing the sensor board LED series drive 
 resistors with lower value as they will be driven from 3.3v instead of 5v.
