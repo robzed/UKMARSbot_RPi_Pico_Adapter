@@ -197,6 +197,13 @@ https://support.arduino.cc/hc/en-us/articles/7454007471004-About-the-analog-pins
 
 Adrian E. reported that in Micropython that ADC doesn’t work on A6 or A7; hopefully this will get fixed soon. It seems fine in the Arduino environment. 
 
+Also note that there was a bug fix to improve the full scale range in the Nina v1.5.0 firmware from 1.8v to 2.7v:
+
+    https://forum.arduino.cc/t/analog-inputs-a4-a7-rp2040-connect/1019786
+    https://github.com/arduino/nina-fw/blob/c84aa3406717af771653733fb9c3480bdf5e1a64/CHANGELOG#L4
+    "* Fix ADC readings range (fuill scale range is now ~2.7V)"
+
+
 ### Function Sw. / Button Workarounds
 
 You should be able to read these from the main task. I'm not sure whether 
