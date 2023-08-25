@@ -197,11 +197,26 @@ https://support.arduino.cc/hc/en-us/articles/7454007471004-About-the-analog-pins
 
 Adrian E. reported that in Micropython that ADC doesn’t work on A6 or A7; hopefully this will get fixed soon. It seems fine in the Arduino environment. 
 
+### ADC maximum level
+
 Also note that there was a bug fix to improve the full scale range on A4 to A7 in the Nina v1.5.0 firmware from 1.8v to 2.7v:
 
     https://forum.arduino.cc/t/analog-inputs-a4-a7-rp2040-connect/1019786
     https://github.com/arduino/nina-fw/blob/c84aa3406717af771653733fb9c3480bdf5e1a64/CHANGELOG#L4
+    https://github.com/arduino/nina-fw/blob/master/CHANGELOG
     "* Fix ADC readings range (fuill scale range is now ~2.7V)"
+
+If need to update the NINA firmware, these are the instructions:
+
+   https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-upgrading-nina-firmware
+
+If you have erased the Arduino base firmware (for example you've installed 
+Micropython or Zeptoforth), you will need to reprogram it. You can drop
+the blink example onto the board. Here are the instructions:
+
+    https://docs.arduino.cc/tutorials/nano-rp2040-connect/rp2040-upgrading-nina-firmware#option-3-arduino-fw-uploader
+
+
 
 
 ### Function Sw. / Button Workarounds
