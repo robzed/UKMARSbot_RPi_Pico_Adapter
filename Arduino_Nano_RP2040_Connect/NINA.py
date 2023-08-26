@@ -43,8 +43,17 @@ class NINA_SPI:
     def SPI_NINA_deselect(self):
         NINA_CS.high()
 
+    def wait_slave_ready(self):
+        return NINA_READY.value()==0
+    
     def SPI_wait_for_NINA_ready(self):
-        return not NINA_READY.value()
+        # the C++ code waits forever or watchdogs the processor. We do it for 1 second
+        start = time.ticks_ms()
+        while not self.wait_slave_ready():
+            if (time.ticks_ms() - start) > 1000:
+                # abort
+                print("NINA not ready in 1 second")
+                return
 
     def SPI_NINA_select(self):
         NINA_CS.low()
@@ -201,9 +210,7 @@ class NINA:
     def _rcv(self, command, expected_number_of_parameters):
         # Wait the reply 
         self.spi.SPI_wait_for_NINA_ready()
-        time.sleep_ms(2)
         self.spi.SPI_NINA_select()
-        time.sleep_ms(2)
 
         data = self.spi.SPI_get_response_command(command, 1)
         self.spi.SPI_NINA_deselect()
@@ -229,7 +236,6 @@ class NINA:
         self.spi.SPI_NINA_deselect()
         
         self.spi.SPI_wait_for_NINA_ready()
-        time.sleep_ms(2)
         self.spi.SPI_NINA_select()
         data = self.spi.SPI_get_response_command(GET_FW_VERSION_CMD, 1)
         self.spi.SPI_NINA_deselect()
@@ -242,6 +248,7 @@ class NINA:
             state = 1
         self._send2(SET_DIGITAL_WRITE, pin, state)
         data = self._rcv(SET_DIGITAL_WRITE, 1)
+        #print()
 
     def analogWrite(self, pin, value0_255):
         self._send2(SET_ANALOG_WRITE, pin, value0_255)
