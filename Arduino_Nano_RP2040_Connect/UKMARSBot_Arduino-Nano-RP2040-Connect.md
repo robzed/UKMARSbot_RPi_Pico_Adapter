@@ -197,6 +197,13 @@ https://support.arduino.cc/hc/en-us/articles/7454007471004-About-the-analog-pins
 
 Adrian E. reported that in Micropython that ADC doesn’t work on A6 or A7; hopefully this will get fixed soon. It seems fine in the Arduino environment. 
 
+There is some example code for Micropython that talks to the NINA chip directly here:
+    https://github.com/robzed/UKMARSbot_RPi_Pico_Adapter/blob/master/Arduino_Nano_RP2040_Connect/NINA.py
+
+And the similar in Zeptoforth:
+    https://github.com/robzed/ukmarsbot_forth/blob/master/for_rp2040/WiFiNINA_gpio.fth
+
+
 ### ADC maximum level
 
 Also note that there was a bug fix to improve the full scale range on A4 to A7 in the Nina v1.5.0 firmware from 1.8v to 2.7v:
