@@ -285,6 +285,69 @@ Here are some ideas:
      possibility.
 
 
+## Notes on Motor PWM outputs
+
+The Raspberry Pi RP2040 has 8 PWM slices, with two channels each. 
+
+The motor left and right PWM outputs are as follows:
+ - GPIO21 is LEFT PWM (Arduino ‘D9’) - PWM slice 2B
+ - GPIO5 is RIGHT PWM (Arduino ‘D10’) - PWM slice 2B
+
+Both of these are on PWM slice 2B. This is bad because they can't be set independantly. 
+
+There are at least three options which will be covered in sub-sections below.
+
+ 1. Swap or cross-couple an I/O line
+ 2. Use the PIO unit to generate the necessary PWM signal
+ 3. Use the second core to generate a PWM wave in software
+
+
+### Option 1: Swap an I/O line
+
+You will need to use another output and cross-couple it to that output. 
+
+Two options are: 
+ - GPIO18 (Arduino ‘D6’) - user IO on sensor board - used for one LED only on the five standard sensor boards. This is on PWM slice 1A.
+ - GPIO6 (Arduino ‘D13’) - used for the on-board LED on Nano RP2040 connect and the mainboard LED (v1.0, v1.1 boards - no LED on v1.3) This on PWM slice 3A. Sometimes this is LED will pulse when the board is in "bootloader mode", and is often used for debugging.
+
+Because Arduino 'D13' is often used for debugging or bootloader functions and 
+always has at least on on-board LED, my belief is that the other option - 
+GPIO13 (Arduino 'D6') - is the better choice.
+
+The 'D6' / GPIO13 pin is closest to the LEFT PWM pin ('D9' / GPIO21) - there 
+are two pins between these two.
+
+<img src="images/PMW_fix.png" width="350" />
+
+We will therefore connect a link between these two pins. This can be done on 
+the Arduino Nano RP2040 Connect itself, or on the motherboard. If you are 
+using the motherboard for other boards (for exmaple the original Arduino Nano, 
+Arduino 33 BLE or the Cytron Maker Nano RP2040), then doing 
+it on the module is a better option. Otherwise it doesn't matter.
+
+The previous GPIO21 can be left as input only, and ignored. Theoretically you 
+could disconnect it from the main board and use it for other purposes. 
+
+
+### Option 2: Use the PIO unit
+
+The Raspberry Pi has a very flexible PIO unit. This can make lots of 
+output waveforms. Using it to generate a PWM is beyond the scope of this 
+document however.
+
+This has the advantage of leaving GPIO18 (Arduino 'D6') as spare for other
+purposes. If you use this GPIO18/'D6' on a custom sensor board, for example,
+then you'd want to avoid reassigning it - and this method would be the
+best option - asuming you aren't using all the PIO units for other purposes.
+
+
+### Option 3: Use the second core to generate a PWM waveform
+
+Theoretically you could also use the second core to generate a PWM waveform 
+in software - again this won't be covered here.
+
+
+
 ## Reflashing the Program
 
 This board does not have a BOOTSEL button - just a reset button. To reprogram 
