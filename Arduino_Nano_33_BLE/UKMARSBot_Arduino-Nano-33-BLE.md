@@ -134,7 +134,10 @@ UKMARSbot v1.1 and v1.3 boards have components to reduce the 5v logic to 3.3v.
 
 <img src="images/serial_port.png" width="300" />
 
-Here you can:
+The serial connection *might* work even with the diode and resistors fitted. This
+might be useful if you are swapping between 3v and 5v processor boards. 
+
+If you want to make the change to 3v only, here you can:
   * Fit a wire instead of the D3 diode (or just short across the
     diode if you've already fitted D3).
   * Fit a wire instead of the R11 4k7 resistor (or just short across
@@ -145,7 +148,9 @@ Here you can:
 
 NOTE: The HC05/HC06 bluetooth modules they usually require 5v power but
 have 3.3v logic - hence the extra components. They appear to work ok
-at 3.3v power - but might exhibit problems due to low voltage.
+at a 3.3v supply voltage and have need tested successfully by UKMARS 
+members at 3 volts.
+
 
 
 ### Step 5: Plug in the Arduino Nano 33 BLE
@@ -169,6 +174,41 @@ before making any changes. It seems to work ok with default values.
 
 The ADC input on the Arduino Nano 33 BLE board is higher resolution 
 than on the original Arduino Nano so this helps to compensate.
+
+Later when tuning your sensors - you might want consider lowering the 1K8 
+(1800 ohm) load resistor (for the phototransistor) to reduce the sensitivity 
+to incidental/ambient light. Some users have suggested 1200 ohms (1K2). It's worth noting
+that there is no 'correct' answer for these values. It is only possible to 
+specify values for a specific combination of emitter, detector and associated 
+load resistors.
+
+However, builders might like to start with a higher value, such as 1k8 and 
+then test with reduced value by soldering on an extra parallel resistor if 
+it is too high. This is easier then removing/replacing parts. For example, 
+placing the following resistor value 'B' in parallel with 1800 Ohms, giving 
+a new  'R' (combined resistance):
+
+|   B   |   R  |
+|-------|------|
+| 22000 | 1664 |
+| 15000 | 1607 |
+| 12000 | 1565 |
+| 10000 | 1525 |
+| 6800  | 1423 |
+| 5600  | 1362 |
+| 4700  | 1302 |
+| 3300  | 1165 |
+
+You can find how to calculate the value of parallel resistors on the web by
+searching. 
+
+Generally builders should also be aware of the importance of shielding the 
+detector adequately from ambient illuminations as well - both for IR and 
+visible light systems. 
+
+NOTE: Some builders also *increase* the phototransisor load resistor in 
+order to increase ensure full scale on the ADC at high light level in order to 
+gain extra resolution and sensitivity. Experiments are left to the robot builder.
 
 
 ## ADC Inputs
